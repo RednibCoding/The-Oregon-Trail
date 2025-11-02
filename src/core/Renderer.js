@@ -84,4 +84,37 @@ export class Renderer {
         this.ctx.font = this.font;
         return this.ctx.measureText(text).width;
     }
+    
+    drawPopup(title, content, x, y, width, showCloseHint = true) {
+        // Calculate height based on content
+        const padding = 20;
+        const titleHeight = 30;
+        const contentHeight = content.length * this.lineHeight;
+        const hintHeight = showCloseHint ? 30 : 0;
+        const height = titleHeight + contentHeight + hintHeight + (padding * 3);
+        
+        // Draw semi-transparent overlay
+        this.ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+        this.ctx.fillRect(0, 0, this.width, this.height);
+        
+        // Draw popup box
+        this.ctx.fillStyle = this.colors.background;
+        this.ctx.fillRect(x, y, width, height);
+        this.drawBox(x, y, width, height, this.colors.accent);
+        
+        // Draw title with background
+        this.ctx.fillStyle = this.colors.accent;
+        this.ctx.fillRect(x + 2, y + 2, width - 4, titleHeight);
+        this.drawText(title, x + width / 2, y + padding / 2, this.colors.background, 'center');
+        
+        // Draw content
+        const contentY = y + titleHeight + padding;
+        this.drawTextBlock(content, x + padding, contentY, this.colors.text, 'left');
+        
+        // Draw close hint
+        if (showCloseHint) {
+            const hintY = y + height - hintHeight;
+            this.drawText('Press ESC or ENTER to close', x + width / 2, hintY + 5, this.colors.info, 'center');
+        }
+    }
 }
