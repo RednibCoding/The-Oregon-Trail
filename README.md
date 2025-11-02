@@ -4,6 +4,8 @@ A faithful recreation of the classic 1985 educational computer game, built with 
 
 ![Oregon Trail Game](https://img.shields.io/badge/Status-Complete-brightgreen)
 
+[Try It: **>The Oregon Trail<**](https://rednibcoding.github.io/The-Oregon-Trail/)
+
 ## About
 
 Relive the journey of 19th-century pioneers traveling from Independence, Missouri to Oregon City, Oregon along the historic Oregon Trail. Manage your resources, make critical decisions, and guide your party of five across 2,040 miles of dangerous frontier territory.
